@@ -42,6 +42,16 @@ textarea {
 button {
   cursor: pointer;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
+  box-shadow: 0 0 0 1000px var(--bg) inset;
+  caret-color: var(--text);
+  transition: background-color 600000s ease-in-out 0s;
+}
 .app-shell {
   min-height: 100vh;
   background: var(--bg);
