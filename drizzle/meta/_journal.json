@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1784367874473,
+      "tag": "0000_sparkling_cassandra_nova",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1784568446429,
+      "tag": "0001_overjoyed_rick_jones",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1784569733247,
+      "tag": "0002_wandering_big_bertha",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1784716680720,
+      "tag": "0003_demonic_swarm",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1784725272702,
+      "tag": "0004_ambiguous_luckman",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1784737609298,
+      "tag": "0005_low_unus",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1784739863406,
+      "tag": "0006_happy_hulk",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1784741324548,
+      "tag": "0007_warm_santa_claus",
+      "breakpoints": true
+    }
+  ]
+}

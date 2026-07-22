@@ -1,0 +1,27 @@
+DREAMFYRE — VERCEL UPLOAD CHECKLIST
+
+1. Extract the delivered ZIP. Do not upload the ZIP as one file.
+2. Open the extracted folder and confirm package.json, app, public and vercel.json
+   are immediately visible. That folder is the Vercel project root.
+3. Upload it to a private GitHub repository and import that repository at
+   https://vercel.com/new, or drag the extracted project folder into Vercel.
+4. Confirm Framework Preset is Next.js and Build Command is npm run build.
+5. Add the required variables in Project Settings > Environment Variables:
+
+   TURSO_DATABASE_URL
+   TURSO_AUTH_TOKEN
+   ADMIN_EMAILS
+   GAME_CREDENTIAL_ENCRYPTION_KEY
+   RESEND_API_KEY
+   EMAIL_FROM
+   AUTH_PREVIEW_OTP=false
+
+6. Add Google, Microsoft and Apple client ID/secret pairs when those sign-in
+   applications are ready. See .env.example and docs/VERCEL_DEPLOYMENT.md.
+7. Redeploy after every environment-variable change.
+8. Register the exact email listed in ADMIN_EMAILS. It becomes super admin.
+9. In Admin > Game links, save one official Play URL for each game when the
+   client supplies it. Game Operations staff never enters per-player URLs.
+
+If Vercel shows 404 NOT_FOUND and the build log did not run next build, the wrong
+folder (or the unextracted ZIP) was uploaded.

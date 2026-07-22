@@ -1,0 +1,13 @@
+{
+  "name": "DreamFyre Casino Player Portal",
+  "short_name": "DreamFyre",
+  "description": "Casino accounts, wallet, rewards and support in one secure player portal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050a12",
+  "theme_color": "#F8960E",
+  "icons": [
+    { "src": "/dreamfyre-mark-v2.webp", "sizes": "512x512", "type": "image/webp", "purpose": "any" }
+  ]
+}
