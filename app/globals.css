@@ -6550,6 +6550,9 @@ h3,
   background: linear-gradient(145deg, rgba(12, 22, 36, 0.97), rgba(5, 12, 22, 0.97));
   box-shadow: var(--shadow);
 }
+.auth-card.auth-card-v2 {
+  width: min(100%, 620px);
+}
 .auth-brand {
   display: flex;
   flex-direction: column;
