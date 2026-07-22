@@ -1069,7 +1069,8 @@ input:-webkit-autofill:active {
 .input-icon svg {
   position: absolute;
   left: 11px;
-  top: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #879188;
 }
 .input-icon input {
