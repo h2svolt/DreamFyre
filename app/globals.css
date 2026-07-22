@@ -6526,6 +6526,9 @@ h3,
   padding: 24px;
   position: relative;
 }
+.auth-shell.auth-shell-v2 {
+  align-items: flex-start;
+}
 .auth-card {
   position: relative;
   z-index: 1;
