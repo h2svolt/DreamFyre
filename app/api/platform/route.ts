@@ -147,7 +147,13 @@ export async function POST(request: NextRequest) {
     if (action === "spin_daily_roulette") {
       const actionKey = `daily-spin:${dayKey()}`;
       if (await env.DB.prepare("SELECT id FROM engagement_actions WHERE user_id=? AND action_key=?").bind(userId, actionKey).first()) return NextResponse.json({ error: "Today’s roulette spin has already been used" }, { status: 409 });
-      const rewards = [0.25, 0.5, 1, 2, 3, 5, 0.5, 1]; const rewardIndex = crypto.getRandomValues(new Uint8Array(1))[0] % rewards.length; const reward = rewards[rewardIndex]; const created = now();
+      const rewards = [0.25, 0.5, 1, 2, 3, 5, 0.5, 1];
+      const weights = [500, 150, 60, 40, 25, 15, 150, 60]; // heavily favors the lowest value; sums to 1000
+      const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+      const roll = crypto.getRandomValues(new Uint16Array(1))[0] % totalWeight;
+      let cumulative = 0; let rewardIndex = weights.length - 1;
+      for (let i = 0; i < weights.length; i += 1) { cumulative += weights[i]; if (roll < cumulative) { rewardIndex = i; break; } }
+      const reward = rewards[rewardIndex]; const created = now();
       await env.DB.batch([
         env.DB.prepare("INSERT INTO engagement_actions (id,user_id,action_key,reward_type,reward_amount,metadata,created_at) VALUES (?,?,?,?,?,?,?)").bind(id("eng"),userId,actionKey,"freeplay",reward,JSON.stringify({wheel:"daily"}),created),
         env.DB.prepare("UPDATE wallets SET freeplay_balance=freeplay_balance+?,updated_at=? WHERE user_id=?").bind(reward,created,userId),
