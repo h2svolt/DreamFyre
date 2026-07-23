@@ -3019,6 +3019,11 @@ body {
 .topbar {
   height: 94px;
   padding: 0 28px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  z-index: 20;
+  top: 0;
   background: rgba(3, 8, 18, 0.88);
   border-bottom: 1px solid #18263a;
   backdrop-filter: blur(18px);
@@ -5812,7 +5817,9 @@ h3,
       transparent 27%
     ),
     linear-gradient(130deg, #090f1b, #100925 58%, #07101a);
-  overflow: hidden;
+  position: sticky;
+  top: 94px;
+  z-index: 5;
 }
 .explore-hero > div:first-child > span,
 .roulette-head > span,
