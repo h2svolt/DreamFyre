@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
     if (action === "claim_engagement_reward") {
       const rewardKey = String(body.rewardKey ?? "");
       const rewards: Record<string, { amount: number; period: string; description: string }> = {
-        "daily-login": { amount: 2, period: dayKey(), description: "Daily login reward" },
+        "daily-login": { amount: 0.25, period: dayKey(), description: "Daily login reward" },
         "daily-credit": { amount: 4, period: dayKey(), description: "Daily credit-load task" },
         "weekly-transfer": { amount: 8, period: weekKey(), description: "Weekly transfer task" },
         "weekly-referral": { amount: 12, period: weekKey(), description: "Weekly referral task" },

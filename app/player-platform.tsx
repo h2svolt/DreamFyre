@@ -574,7 +574,7 @@ function Explore({ data, action, loading, go }: { data: Snapshot; action: (p: Re
   const referredThisWeek = data.referrals.some((referral) => ["qualified", "completed"].includes(referral.status) && referral.createdAt >= `${isoWeek()}T00:00:00.000Z`);
   const monthlyDeposit = data.transactions.filter((tx) => tx.type === "deposit" && tx.status === "completed" && tx.createdAt.startsWith(isoMonth())).reduce((sum, tx) => sum + Math.max(0, tx.amount), 0);
   const tasks = [
-    { key: "daily-login", label: "Daily check-in", detail: "Open the player portal today", amount: 2, period: isoDay(), eligible: true, icon: Star },
+    { key: "daily-login", label: "Daily check-in", detail: "Open the player portal today", amount: 0.25, period: isoDay(), eligible: true, icon: Star },
     { key: "daily-credit", label: "Verified credit load", detail: "Complete one approved game-credit payment today", amount: 4, period: isoDay(), eligible: completedToday, icon: Coins },
     { key: "weekly-transfer", label: "Player transfer", detail: "Send one successful internal transfer this week", amount: 8, period: isoWeek(), eligible: transferredThisWeek, icon: Send },
     { key: "weekly-referral", label: "Qualified referral", detail: "Bring one qualified player this week", amount: 12, period: isoWeek(), eligible: referredThisWeek, icon: Users },
