@@ -2041,6 +2041,7 @@ input:-webkit-autofill:active {
 .auth-consent input:checked + span i { border-color: #45d27b; background: #45d27b; }
 .auth-consent svg { width: 13px; }
 .auth-consent a { color: #ca91ff; text-decoration: none; }
+.auth-consent-links { white-space: nowrap; }
 .auth-card-v2 .auth-error, .auth-card-v2 .auth-success { padding: 13px 14px; border-radius: 9px; font-size: 10px; line-height: 1.5; }
 .auth-card-v2 .auth-success { border: 1px solid #286542; display: flex; align-items: center; gap: 8px; color: #73e59d; background: rgba(22,101,52,.13); }
 .auth-card-v2 .auth-success svg { width: 15px; }
