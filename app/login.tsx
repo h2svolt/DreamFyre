@@ -8,9 +8,9 @@ import { ArrowLeft, ArrowRight, Check, Eye, EyeOff, KeyRound, LockKeyhole, Mail,
 type Tab = "player" | "staff";
 type Mode = "login" | "register" | "forgot" | "reset" | "two_factor";
 
-const MicrosoftMark = () => <span className="provider-mark microsoft"><i/><i/><i/><i/></span>;
-const GoogleMark = () => <span className="provider-mark google">G</span>;
-const AppleMark = () => <span className="provider-mark apple">●</span>;
+const MicrosoftMark = () => <span className="provider-mark microsoft"><svg viewBox="0 0 21 21" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg></span>;
+const GoogleMark = () => <span className="provider-mark google"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="14" width="16" height="28" rx="8" fill="#4285F4" transform="rotate(-20 10 28)"/><rect x="16" y="2" width="16" height="30" rx="8" fill="#34A853" transform="rotate(20 24 17)"/><rect x="26" y="16" width="16" height="28" rx="8" fill="#EA4335" transform="rotate(-20 34 30)"/><rect x="12" y="18" width="16" height="28" rx="8" fill="#FBBC05" transform="rotate(20 20 32)"/></svg></span>;
+const AppleMark = () => <span className="provider-mark apple"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 8 184.8 8 273.5c0 25.7 4.7 52.3 14.1 79.7 12.4 36.7 57.2 126.7 103.9 125.2 24.5-.6 41.8-17.4 73.7-17.4 31 0 47 17.4 74.3 17.4 47.1-.7 87.6-82.9 99.4-119.7-63.2-29.8-54.7-87.4-54.7-89.9zm-56.6-164.3c26.9-32 24.5-61.2 23.7-71.7-23.9 1.4-51.6 16.4-67.5 34.9-17.5 19.5-27.9 43.7-25.7 71.2 26.6 2.1 50.9-11.4 69.5-34.4z"/></svg></span>;
 
 export function Login({ initialMode = "login", initialTab = "player", initialError, initialReferralCode = "" }: { initialMode?: "login" | "register"; initialTab?: Tab; initialError?: string; initialReferralCode?: string }) {
   const [tab, setTab] = useState<Tab>(initialTab);

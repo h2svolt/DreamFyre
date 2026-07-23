@@ -1082,11 +1082,11 @@ input:-webkit-autofill:active {
 }
 .input-icon.input-icon-right input {
   padding-left: 0;
-  padding-right: 46px;
+  padding-right: 58px;
 }
 .input-icon-right .input-icon-badge {
   position: absolute;
-  right: 8px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   width: 30px;
@@ -2017,11 +2017,10 @@ input:-webkit-autofill:active {
 .social-auth-grid a { min-height: 50px; padding: 0 12px; border: 1px solid #25364b; border-radius: 11px; display: flex; align-items: center; justify-content: center; gap: 9px; color: #dbe3ec; text-decoration: none; background: #0a1522; font-size: 10px; font-weight: 800; transition: border-color .2s, transform .2s, background .2s; }
 .social-auth-grid a:hover { transform: translateY(-2px); border-color: #55667d; background: #101c2b; }
 .provider-mark { position: relative; flex: none; width: 19px; height: 19px; display: grid; place-items: center; font-weight: 900; }
-.provider-mark.google { color: #4285f4; font-family: Arial, sans-serif; font-size: 17px; }
-.provider-mark.apple { color: #fff; font-size: 18px; line-height: 1; }
-.provider-mark.apple:before { content: ""; position: absolute; width: 5px; height: 3px; top: 0; right: 4px; border-radius: 5px 1px; background: #fff; transform: rotate(-30deg); }
-.provider-mark.microsoft { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1px; }
-.provider-mark.microsoft i:nth-child(1) { background: #f35325; }.provider-mark.microsoft i:nth-child(2) { background: #81bc06; }.provider-mark.microsoft i:nth-child(3) { background: #05a6f0; }.provider-mark.microsoft i:nth-child(4) { background: #ffba08; }
+.provider-mark.google svg { width: 17px; height: auto; }
+.provider-mark.apple { color: #fff; }
+.provider-mark.apple svg { width: 15px; height: auto; }
+.provider-mark.microsoft svg { width: 17px; height: auto; }
 .auth-divider { height: 43px; display: flex; align-items: center; gap: 12px; color: #59687c; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .auth-divider:before, .auth-divider:after { content: ""; height: 1px; flex: 1; background: #1b2a3d; }
 .auth-card-v2 .form-stack { gap: 15px; }
@@ -6645,11 +6644,11 @@ h3,
   position: relative;
 }
 .auth-password input {
-  padding-right: 38px;
+  padding-right: 64px;
 }
 .auth-visibility {
   position: absolute;
-  right: 8px;
+  right: 45px;
   top: 50%;
   transform: translateY(-50%);
   border: 0;
