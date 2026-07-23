@@ -1099,7 +1099,7 @@ input:-webkit-autofill:active {
   border: 1px solid rgba(148, 163, 184, 0.18);
 }
 .input-icon-right .input-icon-badge svg {
-  position: static;
+  position: auto;
   left: auto;
   top: auto;
   transform: none;
