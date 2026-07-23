@@ -1623,7 +1623,8 @@ input:-webkit-autofill:active {
   background-size: 42px 42px;
   mask-image: linear-gradient(to bottom, #000 0, transparent 70%);
 }
-.public-shell main, .public-header, .public-footer { position: relative; z-index: 1; }
+.public-shell main, .public-footer { position: relative; z-index: 1; }
+.public-header { position: relative; z-index: 50; }
 .public-header {
   height: 86px;
   border-bottom: 1px solid rgba(148,163,184,.13);
