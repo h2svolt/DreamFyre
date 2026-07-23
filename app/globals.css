@@ -1065,6 +1065,8 @@ input:-webkit-autofill:active {
 }
 .input-icon {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .input-icon svg {
   position: absolute;
@@ -1075,6 +1077,8 @@ input:-webkit-autofill:active {
 }
 .input-icon input {
   padding-left: 37px;
+  flex: 1;
+  min-width: 0;
 }
 .field .input-icon input {
   border: none;
