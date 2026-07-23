@@ -5817,9 +5817,12 @@ h3,
       transparent 27%
     ),
     linear-gradient(130deg, #090f1b, #100925 58%, #07101a);
+}
+.explore-sticky-head {
   position: sticky;
   top: 94px;
   z-index: 5;
+  background: var(--bg);
 }
 .explore-hero > div:first-child > span,
 .roulette-head > span,
@@ -5939,6 +5942,11 @@ h3,
 }
 .task-row button {
   height: 31px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   border: 1px solid #F8960E;
   border-radius: 8px;
   background: rgba(248, 150, 14, 0.09);
@@ -6540,6 +6548,20 @@ h3,
   }
   .explore-hero h3 {
     font-size: 30px;
+  }
+  .explore-sticky-head .page-head > div > p:last-child,
+  .explore-sticky-head .explore-hero > div > p {
+    display: none;
+  }
+  .explore-sticky-head .page-head {
+    padding: 4px 0;
+  }
+  .explore-sticky-head .explore-hero {
+    padding: 16px;
+  }
+  .explore-sticky-head .explore-hero h3 {
+    font-size: 22px;
+    margin: 6px 0 0;
   }
   .explore-grid,
   .profile-grid {
