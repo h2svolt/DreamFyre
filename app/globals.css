@@ -1080,13 +1080,32 @@ input:-webkit-autofill:active {
   flex: 1;
   min-width: 0;
 }
-.input-icon.input-icon-right svg {
-  left: auto;
-  right: 11px;
-}
 .input-icon.input-icon-right input {
   padding-left: 0;
-  padding-right: 37px;
+  padding-right: 46px;
+}
+.input-icon-right .input-icon-badge {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(156, 98, 212, 0.14);
+  border: 1px solid rgba(156, 98, 212, 0.28);
+}
+.input-icon-right .input-icon-badge svg {
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  width: 16px;
+  height: 16px;
+  color: #c7a6ec;
 }
 .field .input-icon input {
   border: none;
