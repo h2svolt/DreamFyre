@@ -1095,8 +1095,8 @@ input:-webkit-autofill:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(156, 98, 212, 0.14);
-  border: 1px solid rgba(156, 98, 212, 0.28);
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.18);
 }
 .input-icon-right .input-icon-badge svg {
   position: static;
@@ -1105,7 +1105,7 @@ input:-webkit-autofill:active {
   transform: none;
   width: 16px;
   height: 16px;
-  color: #c7a6ec;
+  color: #8190a3;
 }
 .field .input-icon input {
   border: none;
