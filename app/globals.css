@@ -1076,6 +1076,10 @@ input:-webkit-autofill:active {
 .input-icon input {
   padding-left: 37px;
 }
+.field .input-icon input {
+  border: none;
+  background: transparent;
+}
 .recipient-preview {
   display: flex;
   align-items: center;
