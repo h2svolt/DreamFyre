@@ -1080,6 +1080,14 @@ input:-webkit-autofill:active {
   flex: 1;
   min-width: 0;
 }
+.input-icon.input-icon-right svg {
+  left: auto;
+  right: 11px;
+}
+.input-icon.input-icon-right input {
+  padding-left: 0;
+  padding-right: 37px;
+}
 .field .input-icon input {
   border: none;
   background: transparent;
