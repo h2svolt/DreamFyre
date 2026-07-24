@@ -306,6 +306,12 @@ input:-webkit-autofill:active {
   gap: 18px;
   padding: 4px 0 8px;
 }
+.account-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
 .page-head h2 {
   font-size: 25px;
   line-height: 1.15;
@@ -1326,8 +1332,15 @@ input:-webkit-autofill:active {
   align-items: center;
   gap: 11px;
   min-height: 52px;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
   color: inherit;
   text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 .channel > svg:first-child {
   color: #2b7f46;
@@ -6563,6 +6576,13 @@ h3,
   .explore-sticky-head .explore-hero h3 {
     font-size: 22px;
     margin: 6px 0 0;
+  }
+  .account-head-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .account-head-actions button {
+    width: 100%;
   }
   .explore-grid,
   .profile-grid {

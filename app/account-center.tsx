@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   AlertTriangle, Bell, Camera, Check, ChevronRight, Clock3, Download, FileCheck, Fingerprint,
-  Gamepad2, Gauge, Gift, KeyRound, Laptop, LoaderCircle, LockKeyhole, MailCheck, MapPin, Save,
+  Gamepad2, Gauge, Gift, KeyRound, Laptop, LoaderCircle, LockKeyhole, LogOut, MailCheck, MapPin, Save,
   ShieldCheck, Smartphone, Upload, UserRound, WalletCards,
 } from "lucide-react";
 
@@ -26,7 +26,7 @@ type Tab = "profile" | "verification" | "security" | "responsible" | "activity";
 
 const date = (value: string) => new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(value));
 
-export function AccountCenter({ player, installApp, go }: { player: Player; installApp: () => void; go: (view: "games" | "wallet" | "support") => void }) {
+export function AccountCenter({ player, installApp, go, logout }: { player: Player; installApp: () => void; go: (view: "games" | "wallet" | "support") => void; logout: () => Promise<void> }) {
   const [data, setData] = useState<AccountData | null>(null);
   const [tab, setTab] = useState<Tab>("profile");
   const [loading, setLoading] = useState(false);
@@ -59,7 +59,7 @@ export function AccountCenter({ player, installApp, go }: { player: Player; inst
     { id: "security", label: "Security", icon: ShieldCheck }, { id: "responsible", label: "Play limits", icon: Gauge },
     { id: "activity", label: "Activity", icon: Clock3 },
   ];
-  return <div className="stack account-center"><div className="page-head"><div><p className="eyebrow">Player account centre</p><h2>Profile, verification & security</h2><p>Manage your identity, contact details, login protection, eligibility and responsible-gaming controls.</p></div><button className="primary" onClick={installApp}><Download/>Install DreamFyre</button></div><div className="account-tabs">{tabs.map(({ icon: Icon, ...item }) => <button key={item.id} className={tab === item.id ? "active" : ""} onClick={() => setTab(item.id)}><Icon/><span>{item.label}</span>{item.id === "verification" && !data?.profile.emailVerified && <i/>}</button>)}</div>{message && <div className={`account-flash ${message.type}`} role="status">{message.type === "ok" ? <Check/> : <AlertTriangle/>}{message.text}</div>}{!data ? <div className="account-loading"><LoaderCircle/><span>Loading your secure account…</span></div> : <>{tab === "profile" && <ProfileTab data={data} player={player} loading={loading} action={action}/>} {tab === "verification" && <VerificationTab data={data} loading={loading} action={action}/>} {tab === "security" && <SecurityTab data={data} loading={loading} action={action}/>} {tab === "responsible" && <ResponsibleTab data={data} loading={loading} action={action}/>} {tab === "activity" && <ActivityTab data={data} go={go} action={action} loading={loading}/>}</>}</div>;
+  return <div className="stack account-center"><div className="page-head"><div><p className="eyebrow">Player account centre</p><h2>Profile, verification & security</h2><p>Manage your identity, contact details, login protection, eligibility and responsible-gaming controls.</p></div><div className="account-head-actions"><button className="secondary" onClick={() => void logout()}><LogOut/>Log out</button><button className="primary" onClick={installApp}><Download/>Install DreamFyre</button></div></div><div className="account-tabs">{tabs.map(({ icon: Icon, ...item }) => <button key={item.id} className={tab === item.id ? "active" : ""} onClick={() => setTab(item.id)}><Icon/><span>{item.label}</span>{item.id === "verification" && !data?.profile.emailVerified && <i/>}</button>)}</div>{message && <div className={`account-flash ${message.type}`} role="status">{message.type === "ok" ? <Check/> : <AlertTriangle/>}{message.text}</div>}{!data ? <div className="account-loading"><LoaderCircle/><span>Loading your secure account…</span></div> : <>{tab === "profile" && <ProfileTab data={data} player={player} loading={loading} action={action}/>} {tab === "verification" && <VerificationTab data={data} loading={loading} action={action}/>} {tab === "security" && <SecurityTab data={data} loading={loading} action={action}/>} {tab === "responsible" && <ResponsibleTab data={data} loading={loading} action={action}/>} {tab === "activity" && <ActivityTab data={data} go={go} action={action} loading={loading}/>}</>}</div>;
 }
 
 function Panel({ children, className = "" }: { children: React.ReactNode; className?: string }) { return <section className={`card account-panel ${className}`}>{children}</section>; }
