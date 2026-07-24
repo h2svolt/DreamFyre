@@ -66,6 +66,25 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Email delivery is not configured. Add RESEND_API_KEY and EMAIL_FROM." }, { status: 500 });
   }
 
+  // Manual test mode: ?test=you@example.com sends the template once, immediately,
+  // to that address only - bypasses the inactivity check and doesn't touch
+  // winback_emails, so it never interferes with the real automated schedule.
+  const testEmail = request.nextUrl.searchParams.get("test");
+  if (testEmail) {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
+      body: JSON.stringify({
+        from: env.EMAIL_FROM,
+        to: [testEmail],
+        subject: "[TEST] We miss you at DreamFyre — come back, the fun is waiting!",
+        html: winbackEmailHtml(request.nextUrl.searchParams.get("name") || "there"),
+      }),
+    });
+    const body = await response.json();
+    return NextResponse.json({ test: true, to: testEmail, resendStatus: response.status, resendBody: body }, { status: response.ok ? 200 : 502 });
+  }
+
   const now = new Date();
   const inactiveThreshold = new Date(now.getTime() - INACTIVE_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const repeatThreshold = new Date(now.getTime() - REPEAT_DAYS * 24 * 60 * 60 * 1000).toISOString();
