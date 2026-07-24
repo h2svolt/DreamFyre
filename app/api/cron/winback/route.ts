@@ -14,6 +14,7 @@ type Candidate = { id: string; email: string; displayName: string };
 
 const SITE_URL = "https://dream-fyre.vercel.app";
 const LOGO_URL = `${SITE_URL}/dreamfyre-wordmark.png`;
+const SUPPORT_REPLY_TO = "dream.fyre234@gmail.com";
 
 function winbackEmailHtml(displayName: string) {
   const name = displayName || "there";
@@ -77,6 +78,7 @@ export async function GET(request: NextRequest) {
       body: JSON.stringify({
         from: env.EMAIL_FROM,
         to: [testEmail],
+        reply_to: [SUPPORT_REPLY_TO],
         subject: "[TEST] We miss you at DreamFyre — come back, the fun is waiting!",
         html: winbackEmailHtml(request.nextUrl.searchParams.get("name") || "there"),
       }),
@@ -113,6 +115,7 @@ export async function GET(request: NextRequest) {
         body: JSON.stringify({
           from: env.EMAIL_FROM,
           to: [player.email],
+          reply_to: [SUPPORT_REPLY_TO],
           subject: "We miss you at DreamFyre — come back, the fun is waiting!",
           html: winbackEmailHtml(player.displayName),
         }),

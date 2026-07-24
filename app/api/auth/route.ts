@@ -80,7 +80,7 @@ async function sendCode(env: RuntimeSecrets, email: string, code: string, purpos
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
-      body: JSON.stringify({ from: env.EMAIL_FROM, to: [email], subject: `DreamFyre verification code: ${code}`, html: `<div style=\"font-family:Arial,sans-serif;padding:24px\"><h2>DreamFyre security code</h2><p>Use this code to ${label}:</p><p style=\"font-size:30px;font-weight:800;letter-spacing:8px\">${code}</p><p>This code expires in 10 minutes. If you did not request it, ignore this email.</p></div>` }),
+      body: JSON.stringify({ from: env.EMAIL_FROM, to: [email], reply_to: ["dream.fyre234@gmail.com"], subject: `DreamFyre verification code: ${code}`, html: `<div style=\"font-family:Arial,sans-serif;padding:24px\"><h2>DreamFyre security code</h2><p>Use this code to ${label}:</p><p style=\"font-size:30px;font-weight:800;letter-spacing:8px\">${code}</p><p>This code expires in 10 minutes. If you did not request it, ignore this email.</p></div>` }),
     });
     if (!response.ok) throw new Error("Email delivery is temporarily unavailable");
     return false;
