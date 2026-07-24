@@ -68,6 +68,7 @@ export async function initializeSchema(db: DatabaseLike) {
     db.prepare("CREATE INDEX IF NOT EXISTS game_requests_user_created_idx ON game_requests(user_id, created_at DESC)"),
     db.prepare("CREATE INDEX IF NOT EXISTS game_requests_status_created_idx ON game_requests(status, created_at ASC)"),
     db.prepare("CREATE UNIQUE INDEX IF NOT EXISTS engagement_user_action_idx ON engagement_actions(user_id, action_key)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS winback_emails (user_id TEXT PRIMARY KEY, last_sent_at TEXT NOT NULL)"),
   ]).then(() => undefined);
   schemaInitializations.set(db, initialization);
   try {
