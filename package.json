@@ -16,6 +16,7 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@emailjs/nodejs": "^5.0.2",
     "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource-variable/oxanium": "^5.3.0",
     "@libsql/client": "^0.17.4",
