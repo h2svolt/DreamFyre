@@ -7093,9 +7093,9 @@ h3,
 .protected-profile-change small { display:block; margin-top:7px; color:#d8ad60; line-height:1.45; }
 .channel-online { margin-left:auto; color:#57dd87; font-size:10px; font-style:normal; font-weight:900; letter-spacing:.08em; }
 
-.h2svolt-credit { display:inline-flex; align-items:center; gap:6px; color:#9fd2ff!important; font-weight:850; text-decoration:none; }
-.h2svolt-credit svg { width:14px; }
-.h2svolt-credit:hover { color:#fff!important; }
+.h2svolt-banner { display: block; width: min(100%, 480px); margin: 0 auto 24px; border-radius: 14px; overflow: hidden; transition: transform .2s, opacity .2s; }
+.h2svolt-banner:hover { transform: translateY(-2px); opacity: .92; }
+.h2svolt-banner img { display: block; width: 100%; height: auto; }
 
 body .app-shell :where(small,label>span) { font-size:11px!important; }
 body .app-shell .content p { font-size:12px!important; line-height:1.55; }
@@ -7114,7 +7114,7 @@ body .public-shell :where(.public-footer-bottom,.public-footer-top a) { font-siz
   .admin-contact-grid{grid-template-columns:1fr}
   .admin-payment-link-editor{grid-template-columns:1fr}
   .admin-payment-link-editor button,.admin-payment-link-editor a{width:100%}
-  .public-footer-bottom .h2svolt-credit{margin-top:4px}
+  .h2svolt-banner{width:min(100%,340px)}
 }
 
 /* Provider-link and client payment configuration */
