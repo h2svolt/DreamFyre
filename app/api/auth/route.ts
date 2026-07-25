@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import emailjs from "@emailjs/nodejs";
 import { initializeSchema } from "../_lib/schema";
 import { isStaffRole } from "../_lib/permissions";
 import {
@@ -75,17 +76,21 @@ async function ensureAccountRecords(db: Database, userId: string) {
 async function sendCode(env: RuntimeSecrets, email: string, code: string, purpose: "password_reset" | "email_verification" | "login_2fa") {
   const preview = env.AUTH_PREVIEW_OTP === "true" || email.endsWith(".test");
   if (preview) return true;
-  if (env.RESEND_API_KEY && env.EMAIL_FROM) {
-    const label = purpose === "password_reset" ? "reset your DreamFyre password" : purpose === "login_2fa" ? "finish signing in to DreamFyre" : "verify your DreamFyre email";
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
-      body: JSON.stringify({ from: env.EMAIL_FROM, to: [email], reply_to: ["dream.fyre234@gmail.com"], subject: `DreamFyre verification code: ${code}`, html: `<div style=\"font-family:Arial,sans-serif;padding:24px\"><h2>DreamFyre security code</h2><p>Use this code to ${label}:</p><p style=\"font-size:30px;font-weight:800;letter-spacing:8px\">${code}</p><p>This code expires in 10 minutes. If you did not request it, ignore this email.</p></div>` }),
-    });
-    if (!response.ok) throw new Error("Email delivery is temporarily unavailable");
-    return false;
+  const serviceId = process.env.EMAILJS_SERVICE_ID;
+  const templateId = process.env.EMAILJS_AUTH_TEMPLATE_ID;
+  const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+  const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+  if (!serviceId || !templateId || !publicKey || !privateKey) {
+    throw new Error("Email delivery is not configured. Add EMAILJS_SERVICE_ID, EMAILJS_AUTH_TEMPLATE_ID, EMAILJS_PUBLIC_KEY and EMAILJS_PRIVATE_KEY in the Vercel environment settings.");
   }
-  throw new Error("Email delivery is not configured. Add RESEND_API_KEY and EMAIL_FROM in the Vercel environment settings.");
+  const purposeLabel = purpose === "password_reset" ? "Reset your DreamFyre password" : purpose === "login_2fa" ? "Finish signing in to DreamFyre" : "Verify your DreamFyre email";
+  emailjs.init({ publicKey, privateKey });
+  try {
+    await emailjs.send(serviceId, templateId, { to_email: email, code, purpose_label: purposeLabel });
+  } catch {
+    throw new Error("Email delivery is temporarily unavailable");
+  }
+  return false;
 }
 
 async function createChallenge(db: Database, email: string, userId: string | null, type: "password_reset" | "email_verification" | "login_2fa") {
