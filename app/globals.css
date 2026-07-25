@@ -1765,7 +1765,7 @@ input:-webkit-autofill:active {
 .public-game-card:hover { transform: translateY(-6px); border-color: #485870; }
 .public-game-art { position: relative; width: 100%; aspect-ratio: 1.28; overflow: hidden; background: color-mix(in srgb, var(--game-accent) 10%, #080e17); }
 .public-game-art:after { content: ""; position: absolute; inset: auto 0 0; height: 48%; background: linear-gradient(transparent, #0d1623); }
-.public-game-art img { object-fit: cover; transition: transform .45s; }
+.public-game-art img { object-fit: contain; transition: transform .45s; }
 .public-game-card:hover .public-game-art img { transform: scale(1.045); }
 .public-game-card-copy { padding: 19px; }
 .public-game-card-copy > span { color: #a983ec; font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
